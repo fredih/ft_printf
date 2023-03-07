@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:33:17 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/07 16:42:52 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:51:25 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 
 int	main(void)
 {
-	// int a = 1;
-	// typeof(a) s = 12;
+	char a[] = "aaa";
 	
-	printf("    %0c   sssss", 'A');
+	printf("    %s   sssss\n", a);
+	
+	a[3] = 97;
+	printf("    %s   sssss\n", a);
+	unsigned long f = 97;
+	printf("    %x   sssss\n", f);
+	
 	return (0);
 }
