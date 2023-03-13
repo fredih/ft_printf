@@ -6,41 +6,12 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 21:08:07 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 16:01:51 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:56:35 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// malloc, free, write,
-// va_start, va_arg, va_copy, va_end
-
-#include <stdlib.h>
-#include <stdarg.h>
-#include <stddef.h>
 #include "libft.h"
-
-// static int	is_specifier(char c)
-// {
-// 	if (c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X')
-// 		return (1);
-// 	if (c == 'c' || c == 's' || c == 'p' )
-// 		return (1);
-// 	return (0);
-// }
-
-
-// static void	check_types(const char c, unsigned int size_of_specifier)
-// {
-// 	if (specifier == 'c' && size_of_specifier != sizeof(char))
-// 		raise_error();
-// 	// if (specifier == 's' && size_of_specifier != sizeof(char))
-// 	// 	raise_error();libft.a
-// 	if (specifier == 'u' && size_of_specifier != sizeof(int))
-// 		raise_error();
-// 	if (specifier == 'x' && size_of_specifier != sizeof(int))
-// 		raise_error();
-// 	if (specifier == 'X' && size_of_specifier != sizeof(int))
-// 		raise_error();
-// }
+#include "ft_printf.h"
 
 static void	check_specifier_type(const char specifier, va_list vals)
 {
@@ -77,33 +48,33 @@ static void	sanitize(const char *str, va_list vals)
 	va_end(vals_copy);
 }
 
+static size_t	ft_put_ptr(void *nbr, char *base)
+{
+	if (!nbr)
+	{
+		return (ft_putstr_fd("(nil)", 1));
+	}
+	ft_putstr_fd("0x", 1);
+	return (2 + ft_put_ull((unsigned long long)nbr, base));
+}
 
 static size_t	process_specifier(const char specifier, va_list vals)
 {
-	char	*str;
-	size_t	printed_chars;
-
 	if (specifier == 'c')
-		return (ft_putchar_fd(va_arg(vals, int), 0));
+		return (ft_putchar_fd(va_arg(vals, int), 1));
 	if (specifier == 's')
-		return (ft_putstr_fd(va_arg(vals, char *), 0));
+		return (ft_putstr_fd(va_arg(vals, char *), 1));
 	if (specifier == 'p')
-	{
-		str = ft_itoa((unsigned long)va_arg(vals, void *));
-		printed_chars = ft_putstr_fd(str, 0);
-	}
+		return (ft_put_ptr(va_arg(vals, void *), "0123456789abcdef"));
 	if (specifier == 'd' || specifier == 'i' )
-	{
-		str = ft_itoa(va_arg(vals, int));
-		printed_chars = ft_putstr_fd(str, 0);
-	}
-	if (specifier == 'x' || specifier == 'X' || specifier == 'u')
-	{
-		str = ft_itoa(va_arg(vals, unsigned int));
-		printed_chars = ft_putstr_fd(str, 0);
-	}
-	free(str);
-	return (printed_chars);
+		return (ft_putnbr_fd(va_arg(vals, int), 1));
+	if (specifier == 'x')
+		return (ft_put_ull(va_arg(vals, unsigned int), "0123456789abcdef"));
+	if (specifier == 'X')
+		return (ft_put_ull(va_arg(vals, unsigned int), "0123456789ABCDEF"));
+	if (specifier == 'u')
+		return (ft_put_ull(va_arg(vals, unsigned int), "0123456789"));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
@@ -121,13 +92,13 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == '%')
-				printed_characters += ft_putchar_fd('%', 0);
+				printed_characters += ft_putchar_fd('%', 1);
 			else
 				printed_characters += process_specifier(str[i + 1], vals);
 			i++;
 		}
 		else
-			printed_characters += ft_putchar_fd(str[i], 0);
+			printed_characters += ft_putchar_fd(str[i], 1);
 		i++;
 	}
 	va_end(vals);
