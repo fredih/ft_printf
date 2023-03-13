@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 15:23:15 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 15:17:47 by aantonio         ###   ########.fr       */
+/*   Created: 2022/12/30 10:10:14 by aantonio          #+#    #+#             */
+/*   Updated: 2023/01/05 16:13:30 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_putstr_fd(char *s, int fd)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char		*newstr;
+	size_t		slen;
 
-	i = 0;
-	while (s[i])
+	if (start >= ft_strlen(s))
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		newstr = ft_calloc(1, sizeof(char));
+		newstr[0] = '\0';
+		return (newstr);
 	}
-	return (i);
+	slen = ft_strlen((char *)s + start);
+	if (slen < len)
+		len = slen;
+	newstr = ft_calloc(len + 1, sizeof(char));
+	if (!newstr)
+		return (NULL);
+	ft_strlcpy(newstr, (char *)s + start, len + 1);
+	return (newstr);
 }

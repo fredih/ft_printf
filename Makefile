@@ -1,23 +1,41 @@
-NAME	:= libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/07 22:50:02 by aantonio          #+#    #+#              #
+#    Updated: 2023/03/13 15:48:56 by aantonio         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CC := gcc
+CFLAGS := -Wall -Wextra -Werror
+RM = rm -rf
+NAME    := libftprintf.a
 SRCFOLDER := srcs
-SRCS := main.c ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c ft_itoa.c ft_calloc.c ft_bzero.c ft_memset.c
+SRCS := ft_isalnum.c ft_isprint.c ft_memcpy.c ft_putendl_fd.c ft_strchr.c ft_strlcat.c ft_strncmp.c\
+				ft_substr.c ft_atoi.c ft_isalpha.c ft_itoa.c ft_memmove.c ft_putnbr_fd.c ft_strdup.c ft_strlcpy.c\
+				ft_strnstr.c ft_tolower.c ft_bzero.c ft_isascii.c ft_memchr.c ft_memset.c ft_putstr_fd.c ft_striteri.c\
+				ft_strlen.c ft_strrchr.c ft_toupper.c ft_calloc.c ft_isdigit.c ft_memcmp.c ft_putchar_fd.c ft_split.c\
+				ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_printf.c
 OBJS := $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc libftprintf.a $(OBJS) libft.a
-
-$(OBJS): %.o: %.c
-	gcc -Wall -Wextra -Werror -c $< -o $@ -lft -L ./
+		ar rc $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS)
-
-fclean:
-	rm -f $(OBJS)
-	rm -f libftprintf.a
-
+		$(RM) $(OBJS)
+fclean: clean
+		$(RM) $(NAME)
 re: fclean all
 
-.PHONY = all clean fclean libftprintf.a re out
+so:
+	cc -nostartfiles -shared -o $(NAME) $(SRCS)
+
+.PHONY = all clean fclean re
+
+

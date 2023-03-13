@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 15:23:15 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 15:17:47 by aantonio         ###   ########.fr       */
+/*   Created: 2022/12/30 10:45:55 by aantonio          #+#    #+#             */
+/*   Updated: 2022/12/30 11:06:17 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 
-size_t	ft_putstr_fd(char *s, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	char	*newstr;
+	size_t	s1len;
+	size_t	s2len;
+	int		i;
 
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	newstr = ft_calloc(s1len + s2len + 1, sizeof(char));
+	if (!newstr)
+		return (0);
 	i = 0;
-	while (s[i])
+	while (s1[i])
 	{
-		ft_putchar_fd(s[i], fd);
+		newstr[i] = s1[i];
 		i++;
 	}
-	return (i);
+	i = 0;
+	while (s2[i])
+	{
+		newstr[s1len + i] = s2[i];
+		i++;
+	}
+	newstr[s1len + i] = '\0';
+	return (newstr);
 }

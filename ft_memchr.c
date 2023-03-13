@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 15:23:28 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 14:53:51 by aantonio         ###   ########.fr       */
+/*   Created: 2022/12/29 10:01:58 by aantonio          #+#    #+#             */
+/*   Updated: 2023/01/06 23:18:07 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_putchar_fd(char c, int fd)
+void	*ft_memchr(const void *s, int c, unsigned int n)
 {
-	write(fd, &c, 1);
-	return (1);
+	unsigned int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+			return (((char *)s + i));
+		i++;
+	}
+	return (0);
 }

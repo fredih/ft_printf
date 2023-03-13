@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 21:08:07 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/12 20:07:37 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:01:51 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,7 @@
 // 	if (specifier == 'c' && size_of_specifier != sizeof(char))
 // 		raise_error();
 // 	// if (specifier == 's' && size_of_specifier != sizeof(char))
-// 	// 	raise_error();
-// 	if (specifier == 'p' && size_of_specifier != sizeof(*void))
-// 		raise_error();
-// 	if (specifier == 'd' && size_of_specifier != sizeof(int))
-// 		raise_error();
-// 	if (specifier == 'i' && size_of_specifier != sizeof(int))
-// 		raise_error();
+// 	// 	raise_error();libft.a
 // 	if (specifier == 'u' && size_of_specifier != sizeof(int))
 // 		raise_error();
 // 	if (specifier == 'x' && size_of_specifier != sizeof(int))
@@ -66,72 +60,76 @@ static void	check_specifier_type(const char specifier, va_list vals)
 
 static void	sanitize(const char *str, va_list vals)
 {
-	size_t				i;
+	size_t	i;
+	va_list	vals_copy;
 
+	va_copy(vals_copy, vals);
 	i = 0;
 	while (i < ft_strlen(str))
 	{
 		if (str[i] == '%')
 		{
-			check_specifier_type(str[i + 1], vals);
+			check_specifier_type(str[i + 1], vals_copy);
 			i++;
 		}
 		i++;
 	}
+	va_end(vals_copy);
 }
 
 
-static void	process_specifier(const char specifier, va_list vals)
+static size_t	process_specifier(const char specifier, va_list vals)
 {
 	char	*str;
+	size_t	printed_chars;
 
 	if (specifier == 'c')
-		ft_putchar_fd(va_arg(vals, int), 0);
+		return (ft_putchar_fd(va_arg(vals, int), 0));
 	if (specifier == 's')
-		ft_putstr_fd(va_arg(vals, char *), 0);
+		return (ft_putstr_fd(va_arg(vals, char *), 0));
 	if (specifier == 'p')
 	{
 		str = ft_itoa((unsigned long)va_arg(vals, void *));
-		ft_putstr_fd(str, 0);
-		free(str);
+		printed_chars = ft_putstr_fd(str, 0);
 	}
 	if (specifier == 'd' || specifier == 'i' )
 	{
 		str = ft_itoa(va_arg(vals, int));
-		ft_putstr_fd(str, 0);
-		free(str);
+		printed_chars = ft_putstr_fd(str, 0);
 	}
 	if (specifier == 'x' || specifier == 'X' || specifier == 'u')
 	{
 		str = ft_itoa(va_arg(vals, unsigned int));
-		ft_putstr_fd(str, 0);
-		free(str);
+		printed_chars = ft_putstr_fd(str, 0);
 	}
+	free(str);
+	return (printed_chars);
 }
 
-void	ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	vals;
 	size_t	i;
+	size_t	printed_characters;
 
 	va_start(vals, str);
 	sanitize(str, vals);
-	va_end(vals);
-	va_start(vals, str);
+	printed_characters = 0;
 	i = 0;
 	while (i < ft_strlen(str))
 	{
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == '%')
-				ft_putchar_fd('%', 0);
+				printed_characters += ft_putchar_fd('%', 0);
 			else
-				process_specifier(str[i + 1], vals);
+				printed_characters += process_specifier(str[i + 1], vals);
 			i++;
 		}
 		else
-			ft_putchar_fd(str[i], 0);
+			printed_characters += ft_putchar_fd(str[i], 0);
 		i++;
 	}
 	va_end(vals);
+	return (printed_characters);
 }

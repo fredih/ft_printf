@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 15:23:28 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 14:53:51 by aantonio         ###   ########.fr       */
+/*   Created: 2022/12/30 14:49:12 by aantonio          #+#    #+#             */
+/*   Updated: 2022/12/30 15:16:50 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_putchar_fd(char c, int fd)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	write(fd, &c, 1);
-	return (1);
+	int		len;
+	int		i;
+
+	len = ft_strlen(s);
+	if (!s)
+		return ;
+	i = 0;
+	while (i < len)
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

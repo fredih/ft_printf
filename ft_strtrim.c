@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 15:23:15 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 15:17:47 by aantonio         ###   ########.fr       */
+/*   Created: 2022/12/30 11:07:49 by aantonio          #+#    #+#             */
+/*   Updated: 2023/01/05 16:57:19 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_putstr_fd(char *s, int fd)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
+	unsigned int	start;
+	unsigned int	end;
+	char			*newstr;
 
-	i = 0;
-	while (s[i])
+	if (!set[0] || !s1[0])
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		return (ft_strdup(s1));
 	}
-	return (i);
+	start = 0;
+	while (ft_strchr(set, s1[start]) && s1[start])
+	{
+		start++;
+	}
+	end = ft_strlen(s1);
+	while (ft_strchr(set, s1[end]) && end > start)
+	{
+		end--;
+	}
+	newstr = ft_substr(s1, start, end - start + 1);
+	return (newstr);
 }
