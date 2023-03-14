@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:33:17 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/14 19:17:06 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:10:01 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,27 +106,61 @@ int	main(void)
 	// ft_put_ull(33, "0123456789abcdef");
 	// ft_printf("\n");
 	// ft_put_ull(31261331, "0123456789abcdef");
-	ft_printf("\n");
-	ft_printf("\n");
-	ft_printf("\n");
-	ft_printf(" %p ", -1);
-	ft_printf("\n");
-	ft_printf(" %p ", 0);
-	ft_printf("\n");
-	ft_printf(" %p ", 1);
-	ft_printf("\n");
-	ft_printf(" %p ", 15);
-	ft_printf("\n");
-	ft_printf(" %p ", 16);
-	ft_printf("\n");
-	ft_printf(" %p ", 17);
-	ft_printf("\n");
-	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
-	ft_printf("\n");
-	ft_printf(" %p %p ", INT_MIN, INT_MAX);
-	ft_printf("\n");
-	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
-	ft_printf("\n");
+
+	// ft_printf(" chars: %d\n",ft_printf("%d", -1));
+	// ft_printf(" chars: %d\n",ft_printf("%d", -0));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 0));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 10));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 11));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 15));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 16));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 17));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 99));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 100));
+	// ft_printf(" chars: %d\n",ft_printf("%d", 101));
+	// ft_printf(" chars: %d\n",ft_printf("%d", -9));
+	// ft_printf(" chars: %d\n",ft_printf("%d", -10));
+	// ft_printf(" chars: %d\n",ft_printf("%d", -11));
+	// ft_printf(" chars: %d\n",ft_printf("%d", -14));
+
+	// ft_printf(" %d ", -1);
+	// ft_printf(" %d ", 10);
+	// ft_printf(" %d ", 11);
+	// ft_printf(" %d ", 15);
+	// ft_printf(" %d ", 16);
+	// ft_printf(" %d ", 17);
+	// ft_printf(" %d ", 99);
+	// ft_printf(" %d ", 100);
+	// ft_printf(" %d ", 101);
+	// ft_printf(" %d ", -9);
+	// ft_printf(" %d ", -10);
+	// ft_printf(" %d ", -11);
+	// ft_printf(" %d ", -14);
+
+
+// 	ft_printf("ERROR:\n");
+// size_t			ft_putnbr_fd(int n, int fd);
+// 	ft_printf(" NULL %s NULL ", NULL);
+// 	ft_printf("\n");
+// 	ft_printf("\n");
+// 	ft_printf(" %p ", -1);
+// 	ft_printf("\n");
+// 	ft_printf(" %p ", 0);
+// 	ft_printf("\n");
+// 	ft_printf(" %p ", 1);
+// 	ft_printf("\n");
+// 	ft_printf(" %p ", 15);
+// 	ft_printf("\n");
+// 	ft_printf(" %p ", 16);
+// 	ft_printf("\n");
+// 	ft_printf(" %p ", 17);
+// 	ft_printf("\n");
+// 	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+// 	ft_printf("\n");
+// 	ft_printf(" %p %p ", INT_MIN, INT_MAX);
+// 	ft_printf("\n");
+// 	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
+// 	ft_printf("\n");
 
 	// ft_printf("\n%i characters:\n", ft_printf("%%"));
 	// ft_printf("\n%i characters:\n", ft_printf("%s%s%s%s%s%s", "", "", "", "", "", ""));
