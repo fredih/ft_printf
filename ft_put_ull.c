@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:51:40 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/14 16:06:41 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:14:55 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,15 @@ unsigned long long	ft_put_ull(unsigned long long number, char *base)
 			break ;
 	}
 	digit_amount = i;
-	ft_putchar_fd(base[number % pwr(ft_strlen(base), i - 1)], 1);
-	while (i > 1)
-		ft_putchar_fd(base[number % pwr(ft_strlen(base), --i)], 1);
+	int res = pwr(ft_strlen(base), --i);
+	ft_putchar_fd(base[number / res], 1);
+	number %= res;
+	while (i > 0)
+	{
+		res = pwr(ft_strlen(base), --i);
+		ft_putchar_fd(base[number / res], 1);
+		number %= res;
+	}
 	// ft_putchar_fd(base[number % ft_strlen(base)], 1);
 	return (digit_amount);
 }
