@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:33:17 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/13 23:02:01 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:04:02 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(void)
 	// ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
 	// ft_printf(" NULL %s NULL ", NULL);
 	// ft_printf(" %p ", -1);
+
+
 	ft_put_ull(0, "0123456789abcdef");
 	ft_printf("\n");
 	ft_put_ull(1, "0123456789abcdef");
@@ -83,26 +85,28 @@ int	main(void)
 	ft_printf("\n");
 	ft_put_ull(32, "0123456789abcdef");
 	ft_printf("\n");
+	ft_put_ull(33, "0123456789abcdef");
 	ft_printf("\n");
-	ft_printf(" %p ", -1);
-	ft_printf("\n");
-	ft_printf(" %p ", 0);
-	ft_printf("\n");
-	ft_printf(" %p ", 1);
-	ft_printf("\n");
-	ft_printf(" %p ", 15);
-	ft_printf("\n");
-	ft_printf(" %p ", 16);
-	ft_printf("\n");
-	ft_printf(" %p ", 17);
-	ft_printf("\n");
-	ft_put_ull(LONG_MIN, "0123456789abcdef");
-	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
-	ft_printf("\n");
-	ft_printf(" %p %p ", INT_MIN, INT_MAX);
-	ft_printf("\n");
-	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
-	ft_printf("\n");
+	// ft_printf("\n");
+	// ft_printf("\n");
+	// ft_printf(" %p ", -1);
+	// ft_printf("\n");
+	// ft_printf(" %p ", 0);
+	// ft_printf("\n");
+	// ft_printf(" %p ", 1);
+	// ft_printf("\n");
+	// ft_printf(" %p ", 15);
+	// ft_printf("\n");
+	// ft_printf(" %p ", 16);
+	// ft_printf("\n");
+	// ft_printf(" %p ", 17);
+	// ft_printf("\n");
+	// ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+	// ft_printf("\n");
+	// ft_printf(" %p %p ", INT_MIN, INT_MAX);
+	// ft_printf("\n");
+	// ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
+	// ft_printf("\n");
 
 	// ft_printf("\n%i characters:\n", ft_printf("%%"));
 	// ft_printf("\n%i characters:\n", ft_printf("%s%s%s%s%s%s", "", "", "", "", "", ""));
