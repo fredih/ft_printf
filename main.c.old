@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:33:17 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/14 21:10:01 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:30:31 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,13 +154,13 @@ int	main(void)
 // 	ft_printf(" %p ", 16);
 // 	ft_printf("\n");
 // 	ft_printf(" %p ", 17);
-// 	ft_printf("\n");
-// 	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
-// 	ft_printf("\n");
-// 	ft_printf(" %p %p ", INT_MIN, INT_MAX);
-// 	ft_printf("\n");
-// 	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
-// 	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+	ft_printf("\n");
+	ft_printf(" %p %p ", INT_MIN, INT_MAX);
+	ft_printf("\n");
+	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
+	ft_printf("\n");
 
 	// ft_printf("\n%i characters:\n", ft_printf("%%"));
 	// ft_printf("\n%i characters:\n", ft_printf("%s%s%s%s%s%s", "", "", "", "", "", ""));

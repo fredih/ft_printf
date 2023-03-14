@@ -6,7 +6,7 @@
 /*   By: aantonio <aantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:51:40 by aantonio          #+#    #+#             */
-/*   Updated: 2023/03/14 21:16:13 by aantonio         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:32:07 by aantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include <limits.h>
 #include "libft.h"
 
-static int	pwr(int base, int exponent)
+static unsigned long long	pwr(unsigned long long base, int exponent)
 {
-	int	i;
-	int	result;
+	unsigned long long	i;
+	unsigned long long	result;
 
 	result = 1;
 	i = 0;
-	while (i < exponent)
+	while (i < (unsigned long long)exponent)
 	{
 		result *= base;
 		i++;
